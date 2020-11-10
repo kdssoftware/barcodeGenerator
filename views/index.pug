@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1 barcode generator
+  form(method="post", action="generate")
+    .border
+      p Size
+      .input
+        label width (px)
+        input(type="number" name="width" placeholder="25" step="1" value="25" required)
+      .input
+        label height (px)
+        input(type="number" name="height" placeholder="54" step="1" value="54" required)
+    .border
+      p Label
+      .border
+        p Options
+        .input
+          label suffix
+          input(type="text" name="suffix")
+        .input
+          label prefix
+          input(type="text" name="prefix")
+      .border
+        p Range
+        .input
+          label from
+          input(type="number" step="1" name="from" placeholder="0" value="0" required)
+        .input
+          label until
+          input(type="number" step="1" name="until" placeholder="100" value="100" required)
+    .border
+      p Text
+      .input
+        label draw text
+        input(type="checkbox" name="textDrawn" value="1")
+      .input
+        label text size
+        input(type="number" name="textSize" placeholder="15" value="15")
+    .border
+      p Type
+      label barcode type
+      .input
+        select(name="type")
+          option(value="c39") Code 39
+          option(value="c128a" selected) Code 128a
+          option(value="c128b") Code 128b
+          option(value="c128c") Code 128c
+          option(value="i2of5") 4 of 5 interleaved
+    button(role="sumbit") generate
